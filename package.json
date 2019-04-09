@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "json-server": "^0.14.2",
     "lodash": "^4.17.11",
+    "node-media-server": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
@@ -16,6 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:json-server": "json-server -p 3001 -w ./server/db.json",
+    "start:rtmp-server": "node ./server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
