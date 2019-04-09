@@ -20,8 +20,9 @@ export const fetchStream = id => async dispatch => {
   dispatch({ type: FETCH_STREAM, payload: data })
 }
 
-export const createStream = formValues => async dispatch => {
-  const { data } = streams.post('/streams', formValues)
+export const createStream = formValues => async (dispatch, getState) => {
+  const { userId } = getState.auth
+  const { data } = streams.post('/streams', { ...formValues, userId })
   dispatch({ type: CREATE_STREAM, payload: data })
 }
 
