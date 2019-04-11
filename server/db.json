@@ -1,10 +1,22 @@
 {
   "streams": [
     {
-      "title": "Twitch Stream",
-      "description": "Video Games",
+      "title": "Twitch",
+      "description": "Video games",
       "userId": "103383928769950265048",
       "id": 1
+    },
+    {
+      "title": "Netflix",
+      "description": "TV and Movies",
+      "userId": "103383928769950265048",
+      "id": 2
+    },
+    {
+      "title": "Hulu",
+      "description": "TV and Movies",
+      "userId": "103383928769950265048",
+      "id": 3
     }
   ]
 }

@@ -23,19 +23,19 @@ export const fetchStream = id => async dispatch => {
 
 export const createStream = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth
-  const { data } = streams.post('/streams', { ...formValues, userId })
+  const { data } = await streams.post('/streams', { ...formValues, userId })
   dispatch({ type: CREATE_STREAM, payload: data })
   history.push('/')
 }
 
 export const editStream = (id, formValues) => async dispatch => {
-  const { data } = streams.patch(`/streams/${id}`, formValues)
+  const { data } = await streams.patch(`/streams/${id}`, formValues)
   dispatch({ type: EDIT_STREAM, payload: data })
   history.push('/')
 }
 
 export const deleteStream = id => async dispatch => {
-  streams.delete(`/streams/${id}`)
+  await streams.delete(`/streams/${id}`)
   dispatch({ type: DELETE_STREAM, payload: id })
   history.push('/')
 }
