@@ -5,11 +5,12 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reduxThunk from 'redux-thunk'
 import App from './components/App'
 import reducers from './reducers'
+import stateValidator from './middlewares/stateValidator'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(reduxThunk))
+  composeEnhancers(applyMiddleware(reduxThunk, stateValidator))
 )
 
 ReactDOM.render(

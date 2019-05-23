@@ -7,7 +7,7 @@ import App from 'components/App'
 
 beforeEach(() => {
   moxios.install()
-  moxios.stubRequest('https://jsonplaceholder.typicode.com/posts/1/comments', {
+  moxios.stubRequest('https://localhost:5000/api/streams', {
     status: 200,
     response: [
       { title: 'Stream 1', description: 'This is a test', googleId: '123456789' },
