@@ -1,5 +1,5 @@
-import { createStream } from '../index'
-import { CREATE_STREAM } from '../types'
+import { createStream } from 'actions'
+import { CREATE_STREAM } from 'actions/types'
 
 describe('createStream', () => {
   it('has the correct type', () => {
