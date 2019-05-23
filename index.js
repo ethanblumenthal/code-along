@@ -1,11 +1,11 @@
 const express = require('express')
 const path = require('path')
+const sequelize  = require('./models')
 
 const app = express()
 
-// require('./models/Stream')
 // require('./routes/streamRoutes')(app)
-// require('./services/mediaServer')
+require('./services/mediaServer')
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
@@ -15,5 +15,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const PORT = process.env.PORT || 5000
-app.listen(PORT)
+sequelize.sync().then(() => {
+  app.listen(process.env.PORT || 5000)
+})
