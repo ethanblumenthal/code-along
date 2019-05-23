@@ -4,7 +4,8 @@ const sequelize  = require('./models')
 
 const app = express()
 
-// require('./routes/streamRoutes')(app)
+require('./routes/streamRoutes')(app)
+require('./routes/authRoutes')(app)
 require('./services/mediaServer')
 
 if (process.env.NODE_ENV === 'production') {
