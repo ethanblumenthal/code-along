@@ -37,9 +37,8 @@ module.exports = app => {
       const { title, description, googleId } = req.body
 
       const stream = await Stream.update({ title, description, googleId }, {
-        where: {
-          id: req.params.id
-        }
+        where: { id: req.params.id },
+        returning: true
       })
       res.json(stream)
     } catch (err) {

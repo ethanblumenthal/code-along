@@ -30,7 +30,7 @@ export const createStream = formValues => async (dispatch, getState) => {
 
 export const editStream = (id, formValues) => async dispatch => {
   const { data } = await axios.patch(`/api/streams/${id}`, formValues)
-  dispatch({ type: EDIT_STREAM, payload: data })
+  dispatch({ type: EDIT_STREAM, payload: data[1][0] })
   history.push('/')
 }
 
