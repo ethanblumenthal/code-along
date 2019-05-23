@@ -11,9 +11,9 @@ module.exports = app => {
     }
   })
 
-  app.get('/api/streams:id', async (req, res, next) => {
+  app.get('/api/streams/:id', async (req, res, next) => {
     try {
-      const stream = await Stream.findById(req.params.id)
+      const stream = await Stream.findByPk(req.params.id)
       res.json(stream)
     } catch (err) {
       next(err)
