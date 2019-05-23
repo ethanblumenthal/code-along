@@ -1,7 +1,8 @@
-const Stream = require('../models/Stream')
+const sequelize  = require('../models')
+const Stream = sequelize.models.stream
 
 module.exports = app => {
-  app.get('/api/streams', async (req, res) => {
+  app.get('/api/streams', async (req, res, next) => {
     try {
       const streams = await Stream.findAll({})
       res.json(streams)
@@ -10,7 +11,7 @@ module.exports = app => {
     }
   })
 
-  app.get('/api/streams:id', async (req, res) => {
+  app.get('/api/streams:id', async (req, res, next) => {
     try {
       const stream = await Stream.findById(req.params.id)
       res.json(stream)
@@ -19,22 +20,23 @@ module.exports = app => {
     }
   })
 
-  app.post('/api/streams', async (req, res) => {
+  app.post('/api/streams', async (req, res, next) => {
     try {
-      const { title, description, userId } = req.body
+      console.log(req.body)
+      const { title, description, googleId } = req.body
 
-      const stream = await Stream.create({ title, description, userId })
+      const stream = await Stream.create({ title, description, googleId })
       res.json(stream)
     } catch (err) {
       next(err)
     }
   })
 
-  app.patch('/api/streams/:id', async (req, res) => {
+  app.patch('/api/streams/:id', async (req, res, next) => {
     try {
-      const { title, description, userId } = req.body
+      const { title, description, googleId } = req.body
 
-      const stream = await Stream.update({ title, description, userId }, {
+      const stream = await Stream.update({ title, description, googleId }, {
         where: {
           id: req.params.id
         }
@@ -45,14 +47,14 @@ module.exports = app => {
     }
   })
 
-  app.delete('/api/streams/:id', async (req, res) => {
+  app.delete('/api/streams/:id', async (req, res, next) => {
     try {
       await Stream.destroy({
         where: {
           id: req.params.id
         }
       })
-      res.sendStatus(204)
+      res.status(204).send()
     } catch (err) {
       next(err)
     }

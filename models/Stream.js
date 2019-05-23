@@ -1,4 +1,4 @@
-const stream = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Stream = sequelize.define('stream', {
     title: {
       type: DataTypes.STRING,
@@ -8,8 +8,8 @@ const stream = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    userId: {
-      type: DataTypes.INTEGER,
+    googleId: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   })
@@ -20,5 +20,3 @@ const stream = (sequelize, DataTypes) => {
 
   return Stream
 }
-
-module.exports = stream

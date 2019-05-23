@@ -3,9 +3,10 @@ const path = require('path')
 const sequelize  = require('./models')
 
 const app = express()
+app.use(express.json())
 
-require('./routes/streamRoutes')(app)
 require('./routes/authRoutes')(app)
+require('./routes/streamRoutes')(app)
 require('./services/mediaServer')
 
 if (process.env.NODE_ENV === 'production') {

@@ -1,11 +1,16 @@
-const User = require('../models/User')
+const sequelize  = require('../models')
+const User = sequelize.models.user
 
 module.exports = app => {
-  app.get('/api/auth', async (req, res) => {
+  app.post('/auth', async (req, res, next) => {
     try {
-      const { userId } = req.body
+      const { googleId } = req.body
 
-      const user = await User.findOrCreate({ userId })
+      const user = await User.findOrCreate({
+        where: { googleId },
+        defaults: { googleId }
+      })
+
       res.json(user)
     } catch (err) {
       next(err)

@@ -1,7 +1,7 @@
-const user = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
-    userId: {
-      type: DataTypes.INTEGER,
+    googleId: {
+      type: DataTypes.STRING,
       unique: true,
       allowNull: false
     }
@@ -13,5 +13,3 @@ const user = (sequelize, DataTypes) => {
 
   return User
 }
-
-module.exports = user
