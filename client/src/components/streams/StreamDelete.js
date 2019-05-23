@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Modal from '../Modal'
 import history from '../../history'
 import { fetchStream, deleteStream } from '../../actions'
+import requireAuth from '../requireAuth'
 
 class StreamDelete extends React.Component {
   componentDidMount() {
@@ -44,4 +45,4 @@ const mapStateToProps = (state, ownProps) => {
   return { stream: state.streams[ownProps.match.params.id] }
 }
 
-export default connect(mapStateToProps, { fetchStream, deleteStream })(StreamDelete)
+export default connect(mapStateToProps, { fetchStream, deleteStream })(requireAuth(StreamDelete))

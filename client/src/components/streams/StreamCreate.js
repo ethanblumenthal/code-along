@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStream } from '../../actions'
 import StreamForm from './StreamForm'
+import requireAuth from '../requireAuth'
 
 class StreamCreate extends React.Component {
   onSubmit = formValues => {
@@ -18,4 +19,4 @@ class StreamCreate extends React.Component {
   }
 }
 
-export default connect(null, { createStream })(StreamCreate)
+export default connect(null, { createStream })(requireAuth(StreamCreate))
