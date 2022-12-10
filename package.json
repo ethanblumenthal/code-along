@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ethanblumenthal/code-along#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
-    "express": "^4.17.0",
+    "express": "^4.17.3",
     "node-media-server": "^2.1.0",
     "nodemon": "^1.19.0",
     "pg": "^7.11.0",
